@@ -1,0 +1,12 @@
+{%extends 'products/index.html'%}
+{% block content %}
+<form class="" action="{% url 'products_app:create' %}" method="post">
+		{% csrf_token %}
+		<input type="text" name="name" value="" placeholder="name">
+		<input type="text" name="price" value="" placeholder="price">
+		<input type="text" name="description" value="" placeholder="description">
+		<input type="text" name="quantity" value="" placeholder="quantity">
+		<button type="submit">Submit</button>
+</form>
+
+{%endblock%}
