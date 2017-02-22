@@ -27,7 +27,7 @@ def create(request):
         quantity = data['quantity'],
         user=request.user
         )
-    return HttpResponseRedirect(redirect_to="/products/list")
+    return HttpResponseRedirect(redirect_to="/products/lists")
 
 def template_to_create(request):
     return render(request, "products/detail.html")
@@ -49,7 +49,7 @@ class Register(TemplateView):
 
 def register_user(request):
     data = request.POST
-    User.objects.create_user(
+    User.objects.create(
         username=data['username'],
         email=data['email'],
         password=data['password'],
@@ -69,7 +69,7 @@ def login_user(request):
         login(request=request, user=user)
     else:
         return HttpResponseRedirect(redirect_to='/')
-    return HttpResponseRedirect(redirect_to='/products/list')
+    return HttpResponseRedirect(redirect_to='/products/lists')
 
 def logout_user(request):
     logout(request)
